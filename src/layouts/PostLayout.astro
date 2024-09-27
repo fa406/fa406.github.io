@@ -1,4 +1,3 @@
----
 import { type BlogSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
@@ -10,7 +9,6 @@ const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll")
 import { Image } from "astro:assets";
----
 
 <BaseLayout title={title} description={description} image={heroImage}, ogType="article">
   <main class="md:flex md:justify-center">
