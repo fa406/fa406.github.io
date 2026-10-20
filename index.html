@@ -13,12 +13,34 @@
         body {
             background-color: #080d13;
             background-image:
-                radial-gradient(ellipse at 12% 0%, rgba(13, 148, 136, .14), transparent 34rem),
-                linear-gradient(rgba(148, 163, 184, .035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(148, 163, 184, .035) 1px, transparent 1px);
-            background-size: auto, 48px 48px, 48px 48px;
+                radial-gradient(ellipse at 14% 4%, rgba(13, 148, 136, .18), transparent 38rem),
+                radial-gradient(ellipse at 92% 42%, rgba(15, 23, 42, .72), transparent 34rem),
+                linear-gradient(rgba(148, 163, 184, .025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, .025) 1px, transparent 1px);
+            background-size: auto, auto, 56px 56px, 56px 56px;
         }
         ::selection { background: rgba(45, 212, 191, .3); color: #f8fafc; }
+        :focus-visible { outline: 2px solid #5eead4; outline-offset: 4px; }
+        main section { scroll-margin-top: 6rem; }
+        .portfolio-nav {
+            background: rgba(8, 13, 19, .88);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+        .nav-links { scrollbar-width: none; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .profile-frame {
+            box-shadow: 0 30px 90px rgba(13, 148, 136, .12);
+        }
+        .surface-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .018));
+            transition: border-color .25s ease, background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+        }
+        .surface-card:hover {
+            border-color: rgba(94, 234, 212, .28);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .2);
+            transform: translateY(-3px);
+        }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -27,15 +49,16 @@
 </head>
 <body class="min-h-screen font-sans text-slate-100 antialiased">
     <div class="mx-auto max-w-6xl px-5 sm:px-8">
-        <nav aria-label="Navigasi utama" data-i18n-aria="nav_label" class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 py-5">
+        <nav aria-label="Navigasi utama" data-i18n-aria="nav_label" class="portfolio-nav sticky top-0 z-50 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-white/10 py-4">
             <a href="#beranda" aria-label="Fanul Nastia — beranda" class="inline-flex items-center gap-2.5 text-sm font-bold tracking-wide text-white">
-                <span class="grid h-9 w-9 place-items-center rounded-xl border border-teal-300/25 bg-teal-300/10 text-xs text-teal-300">FN</span>
+                <span class="grid h-10 w-10 place-items-center rounded-xl border border-teal-300/25 bg-teal-300/10 text-xs text-teal-300 shadow-lg shadow-teal-950/20">FN</span>
                 <span>Fanul Nastia<span class="text-teal-400">.</span></span>
             </a>
-            <div class="flex flex-wrap items-center justify-end gap-x-5 gap-y-3 text-xs font-medium text-slate-400 sm:gap-x-8 sm:text-sm">
-                <div class="flex gap-4 sm:gap-6">
+            <div class="flex w-full flex-wrap items-center justify-between gap-3 text-xs font-medium text-slate-400 sm:w-auto sm:justify-end sm:gap-x-5 sm:text-sm">
+                <div class="nav-links flex max-w-full gap-4 overflow-x-auto whitespace-nowrap sm:gap-6">
                     <a href="#tentang" data-i18n="nav_about" class="transition hover:text-teal-300">Tentang</a>
                     <a href="#pengalaman" data-i18n="nav_experience" class="transition hover:text-teal-300">Pengalaman</a>
+                    <a href="#usaha" data-i18n="nav_business" class="transition hover:text-teal-300">Usaha</a>
                     <a href="#pendidikan" data-i18n="nav_education" class="transition hover:text-teal-300">Pendidikan</a>
                     <a href="#kontak" data-i18n="nav_contact" class="transition hover:text-teal-300">Kontak</a>
                 </div>
@@ -48,17 +71,17 @@
         </nav>
 
         <main>
-            <header id="beranda" class="grid min-h-[620px] items-center gap-12 py-16 md:grid-cols-[1.2fr_.8fr] md:py-24">
-                <div class="order-2 md:order-1">
+            <header id="beranda" class="grid items-center gap-10 py-12 md:min-h-[680px] md:grid-cols-[1.2fr_.8fr] md:gap-16 md:py-24">
+                <div class="order-1">
                     <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/20 bg-teal-400/5 px-3 py-1.5 text-xs font-medium tracking-wide text-teal-300">
                         <span class="h-1.5 w-1.5 rounded-full bg-teal-300"></span>
                         <span data-i18n="hero_badge">PRANATA KOMPUTER · BANDA ACEH</span>
                     </p>
-                    <h1 class="max-w-2xl text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+                    <h1 class="max-w-2xl text-5xl font-bold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">
                         <span data-i18n="hero_greeting">Halo, saya</span><br><span data-i18n="hero_name" class="text-teal-300">Fanul Nastia.</span>
                     </h1>
-                    <p class="mt-6 text-lg font-medium text-slate-300 sm:text-xl" data-i18n="hero_roles">Web Developer / Networking / IT Support / Cyber Security</p>
-                    <p data-i18n="hero_summary" class="mt-5 max-w-xl text-base leading-7 text-slate-400">
+                    <p class="mt-5 max-w-xl text-base font-semibold leading-7 text-slate-200 sm:text-lg" data-i18n="hero_roles">Web Developer / Networking / IT Support / Cyber Security</p>
+                    <p data-i18n="hero_summary" class="mt-4 max-w-xl text-sm leading-7 text-slate-400 sm:text-base">
                         Saya mengembangkan aplikasi web dengan Laravel dan React, serta menggunakan PHP, HTML, JavaScript, Java, Python, dan Google Apps Script. Saya juga berfokus pada administrasi jaringan dan keamanan siber.
                     </p>
                     <p class="mt-4 inline-flex items-center gap-2 text-sm text-slate-500">
@@ -86,10 +109,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="relative order-1 mx-auto w-full max-w-sm md:order-2">
-                    <div aria-hidden="true" class="absolute -inset-4 rounded-[2rem] border border-teal-300/15"></div>
+                <div class="relative order-2 mx-auto w-full max-w-sm md:max-w-md">
+                    <div aria-hidden="true" class="absolute -inset-3 rounded-[2rem] border border-teal-300/15 sm:-inset-4"></div>
                     <div class="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-slate-900 shadow-2xl shadow-teal-950/30">
-                        <img src="foto-profil.png" alt="Foto profil Fanul Nastia" data-i18n-alt="profile_alt" class="h-[360px] w-full object-cover object-top sm:h-[440px]">
+                        <img src="foto-profil.png" alt="Foto profil Fanul Nastia" data-i18n-alt="profile_alt" class="profile-frame h-[320px] w-full object-cover object-top sm:h-[440px]">
                         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-6 pt-20">
                             <p class="text-xs font-semibold uppercase tracking-[.2em] text-teal-300">IT &amp; Network</p>
                             <p class="mt-1 text-lg font-bold" data-i18n="image_caption">Membangun koneksi yang andal.</p>
@@ -137,14 +160,14 @@
                 <div class="mt-12">
                     <h3 class="mb-5 text-xs font-bold uppercase tracking-[.22em] text-slate-300" data-i18n="tech_stack_title">Teknologi &amp; Bahasa Pemrograman</h3>
                     <div class="grid gap-4 sm:grid-cols-3">
-                        <article class="rounded-2xl border border-white/10 bg-white/[.03] p-5">
+                        <article class="surface-card rounded-2xl border border-white/10 p-5">
                             <p class="text-xs font-semibold uppercase tracking-wider text-teal-300" data-i18n="web_frameworks">Web Development</p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="rounded-lg border border-white/10 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200">Laravel</span>
                                 <span class="rounded-lg border border-white/10 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200">React</span>
                             </div>
                         </article>
-                        <article class="rounded-2xl border border-white/10 bg-white/[.03] p-5">
+                        <article class="surface-card rounded-2xl border border-white/10 p-5">
                             <p class="text-xs font-semibold uppercase tracking-wider text-teal-300" data-i18n="programming_languages">Bahasa Pemrograman</p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="rounded-lg border border-white/10 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200">PHP</span>
@@ -154,7 +177,7 @@
                                 <span class="rounded-lg border border-white/10 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200">Python</span>
                             </div>
                         </article>
-                        <article class="rounded-2xl border border-white/10 bg-white/[.03] p-5">
+                        <article class="surface-card rounded-2xl border border-white/10 p-5">
                             <p class="text-xs font-semibold uppercase tracking-wider text-teal-300" data-i18n="automation">Otomasi &amp; Skrip</p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="rounded-lg border border-white/10 bg-slate-950/60 px-3 py-1.5 text-sm text-slate-200">Google Apps Script</span>
@@ -214,10 +237,79 @@
                 </div>
             </section>
 
+            <section id="usaha" class="border-t border-white/10 py-20">
+                <div class="mb-10 max-w-2xl">
+                    <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="business_kicker">03 / Usaha</p>
+                    <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl" data-i18n="business_title">Usaha yang saya jalankan.</h2>
+                    <p class="mt-4 text-sm leading-7 text-slate-400" data-i18n="business_summary">Dua usaha yang saya kelola di Banda Aceh: layanan pengisian game PlayStation serta solusi jaringan, CCTV, dan IT.</p>
+                </div>
+                <div class="grid gap-4 lg:grid-cols-2">
+                    <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[.025] transition duration-300 hover:-translate-y-0.5 hover:border-teal-300/30 hover:shadow-lg hover:shadow-teal-950/20">
+                        <div class="relative flex items-center justify-center overflow-hidden border-b border-white/10 bg-slate-950/60 px-4 py-6">
+                            <img src="rinco-game-store.png" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-2xl">
+                            <a href="rinco-game-store.png" target="_blank" rel="noopener noreferrer" class="relative block">
+                                <img src="rinco-game-store.png" alt="Poster RINCO Game Store — jasa pengisian game PlayStation" data-i18n-alt="business1_alt" loading="lazy" class="h-64 w-auto rounded-lg border border-white/10 shadow-xl shadow-slate-950/50 transition duration-500 group-hover:scale-[1.02] sm:h-80">
+                            </a>
+                        </div>
+                        <div class="flex flex-1 flex-col p-5 sm:p-7">
+                            <p class="text-xs font-semibold uppercase tracking-[.18em] text-teal-300" data-i18n="business1_tag">Jasa Pengisian Game PlayStation</p>
+                            <h3 class="mt-2 text-xl font-bold text-white transition group-hover:text-teal-200">RINCO Game Store</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400" data-i18n="business1_desc">Melayani pengisian dan instalasi game PlayStation 2, 3, dan 4, termasuk FMCB/MCBOOT untuk PS2 yang kompatibel.</p>
+                            <ul class="mt-5 space-y-2.5 text-sm leading-6 text-slate-300">
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business1_point1">Game original &amp; update untuk PS2, PS3, dan PS4</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business1_point2">Dukungan HDD / flashdisk serta instalasi FMCB/MCBOOT</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business1_point3">Cek tipe dan versi sistem sebelum pengerjaan</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business1_point4">Konsultasi dan tanya harga langsung via WhatsApp</span></li>
+                            </ul>
+                            <div class="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+                                <span class="inline-flex items-center gap-2 text-xs text-slate-500">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+                                    <span data-i18n="business_location">Banda Aceh, Aceh Besar &amp; sekitarnya</span>
+                                </span>
+                                <a href="https://wa.me/6289529056266" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-teal-300/30 bg-teal-300/10 px-4 py-2 text-xs font-bold text-teal-200 transition hover:bg-teal-300/20 hover:text-teal-100">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.6-5.6c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-1 1.1-.4.2-.7.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4 0-.6.1-.8l.6-.7c.1-.2.1-.4 0-.6l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.6 6.2 6.2 0 0 0 1.3 3.3 13.6 13.6 0 0 0 5.2 4.5c1.9.8 2.7.9 3.6.7a2.9 2.9 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.9-.5Z"></path></svg>
+                                    <span data-i18n="business_cta">Pesan via WhatsApp</span> <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[.025] transition duration-300 hover:-translate-y-0.5 hover:border-teal-300/30 hover:shadow-lg hover:shadow-teal-950/20">
+                        <div class="relative flex items-center justify-center overflow-hidden border-b border-white/10 bg-slate-950/60 px-4 py-6">
+                            <img src="rinco-technology-services.png" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full scale-110 object-cover opacity-20 blur-2xl">
+                            <a href="rinco-technology-services.png" target="_blank" rel="noopener noreferrer" class="relative block">
+                                <img src="rinco-technology-services.png" alt="Poster RINCO Technology Services — jaringan, CCTV, dan solusi IT" data-i18n-alt="business2_alt" loading="lazy" class="h-64 w-auto rounded-lg border border-white/10 shadow-xl shadow-slate-950/50 transition duration-500 group-hover:scale-[1.02] sm:h-80">
+                            </a>
+                        </div>
+                        <div class="flex flex-1 flex-col p-5 sm:p-7">
+                            <p class="text-xs font-semibold uppercase tracking-[.18em] text-teal-300" data-i18n="business2_tag">Network · CCTV · IT Solution</p>
+                            <h3 class="mt-2 text-xl font-bold text-white transition group-hover:text-teal-200">RINCO Technology Services</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400" data-i18n="business2_desc">Solusi teknologi untuk rumah, kos, dan kantor: jaringan internet yang stabil, keamanan CCTV, dan aktivitas yang lebih lancar.</p>
+                            <ul class="mt-5 space-y-2.5 text-sm leading-6 text-slate-300">
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business2_point1">Pemasangan &amp; konfigurasi Wi-Fi rumah, kos, dan kantor</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business2_point2">Setting CCTV: pemasangan, DVR/NVR, dan monitoring via HP</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business2_point3">Hotspot voucheran &amp; manajemen bandwidth MikroTik</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business2_point4">Perbaikan jaringan, penanganan koneksi, dan maintenance rutin</span></li>
+                                <li class="flex gap-2.5"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><path d="m5 13 4 4L19 7"></path></svg><span data-i18n="business2_point5">Didukung perangkat MikroTik, TP-Link, Ubiquiti, Hikvision, dan Ruijie</span></li>
+                            </ul>
+                            <div class="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+                                <span class="inline-flex items-center gap-2 text-xs text-slate-500">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+                                    <span data-i18n="business_location">Banda Aceh, Aceh Besar &amp; sekitarnya</span>
+                                </span>
+                                <a href="https://wa.me/6289529056266" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-teal-300/30 bg-teal-300/10 px-4 py-2 text-xs font-bold text-teal-200 transition hover:bg-teal-300/20 hover:text-teal-100">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.6-5.6c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-1 1.1-.4.2-.7.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4 0-.6.1-.8l.6-.7c.1-.2.1-.4 0-.6l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.6 6.2 6.2 0 0 0 1.3 3.3 13.6 13.6 0 0 0 5.2 4.5c1.9.8 2.7.9 3.6.7a2.9 2.9 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.9-.5Z"></path></svg>
+                                    <span data-i18n="business_cta">Pesan via WhatsApp</span> <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
             <section id="pendidikan" class="border-t border-white/10 py-20">
                 <div class="grid gap-12 md:grid-cols-2">
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="education_kicker">03 / Akademik</p>
+                        <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="education_kicker">04 / Akademik</p>
                         <h2 class="mt-4 text-3xl font-bold tracking-tight" data-i18n="education_title">Pendidikan</h2>
                         <div class="mt-8 space-y-6 border-l border-white/10 pl-5">
                             <article>
@@ -233,7 +325,7 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="certifications_kicker">04 / Pengembangan</p>
+                        <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="certifications_kicker">05 / Pengembangan</p>
                         <h2 class="mt-4 text-3xl font-bold tracking-tight" data-i18n="certifications_title">Sertifikasi &amp; Kursus</h2>
                         <ul class="mt-8 space-y-3">
                             <li class="flex gap-3 rounded-xl border border-white/10 bg-white/[.03] p-4 text-sm leading-6 text-slate-300"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="mt-1 h-4 w-4 shrink-0 text-teal-300"><circle cx="12" cy="9" r="6"></circle><path d="m8 14-1 7 5-3 5 3-1-7"></path></svg><span data-i18n="cert1">Kursus Keamanan IT: Pertahanan terhadap Kejahatan Digital</span></li>
@@ -248,7 +340,7 @@
 
             <section id="kontak" class="border-t border-white/10 py-20">
                 <div class="rounded-3xl border border-teal-300/20 bg-gradient-to-br from-teal-400/10 to-slate-900/50 p-8 sm:p-12">
-                    <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="contact_kicker">05 / Mari terhubung</p>
+                    <p class="text-xs font-bold uppercase tracking-[.22em] text-teal-300" data-i18n="contact_kicker">06 / Mari terhubung</p>
                     <div class="mt-4 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
                         <div>
                             <h2 class="text-3xl font-bold tracking-tight sm:text-4xl" data-i18n="contact_title">Ada yang ingin didiskusikan?</h2>
@@ -277,7 +369,7 @@
                 page_title: "Fanul Nastia — IT & Network",
                 page_description: "Portofolio Fanul Nastia, Pranata Komputer yang berfokus pada administrasi jaringan, IT support, dan keamanan siber.",
                 nav_label: "Navigasi utama", language_label: "Pilih bahasa",
-                nav_about: "Tentang", nav_experience: "Pengalaman", nav_education: "Pendidikan", nav_contact: "Kontak",
+                nav_about: "Tentang", nav_experience: "Pengalaman", nav_business: "Usaha", nav_education: "Pendidikan", nav_contact: "Kontak",
                 hero_badge: "PRANATA KOMPUTER · BANDA ACEH", hero_greeting: "Halo, saya", hero_name: "Fanul Nastia.",
                 hero_roles: "Web Developer / Networking / IT Support / Cyber Security",
                 hero_summary: "Saya mengembangkan aplikasi web dengan Laravel dan React, serta menggunakan PHP, HTML, JavaScript, Java, Python, dan Google Apps Script. Saya juga berfokus pada administrasi jaringan dan keamanan siber.",
@@ -295,12 +387,30 @@
                 job3_date: "Februari — Juli 2024", job3_summary: "Program kolaborasi Google, Tokopedia, Gojek, dan Traveloka",
                 job4_date: "Selama masa perkuliahan", job4_title: "Asisten Laboratorium Jaringan Komputer",
                 job4_summary: "Mendukung kegiatan praktikum di laboratorium jaringan komputer selama masa perkuliahan.",
-                education_kicker: "03 / Akademik", education_title: "Pendidikan",
+                business_kicker: "03 / Usaha", business_title: "Usaha yang saya jalankan.",
+                business_summary: "Dua usaha yang saya kelola di Banda Aceh: layanan pengisian game PlayStation serta solusi jaringan, CCTV, dan IT.",
+                business1_alt: "Poster RINCO Game Store — jasa pengisian game PlayStation",
+                business1_tag: "Jasa Pengisian Game PlayStation",
+                business1_desc: "Melayani pengisian dan instalasi game PlayStation 2, 3, dan 4, termasuk FMCB/MCBOOT untuk PS2 yang kompatibel.",
+                business1_point1: "Game original & update untuk PS2, PS3, dan PS4",
+                business1_point2: "Dukungan HDD / flashdisk serta instalasi FMCB/MCBOOT",
+                business1_point3: "Cek tipe dan versi sistem sebelum pengerjaan",
+                business1_point4: "Konsultasi dan tanya harga langsung via WhatsApp",
+                business2_alt: "Poster RINCO Technology Services — jaringan, CCTV, dan solusi IT",
+                business2_tag: "Network · CCTV · IT Solution",
+                business2_desc: "Solusi teknologi untuk rumah, kos, dan kantor: jaringan internet yang stabil, keamanan CCTV, dan aktivitas yang lebih lancar.",
+                business2_point1: "Pemasangan & konfigurasi Wi-Fi rumah, kos, dan kantor",
+                business2_point2: "Setting CCTV: pemasangan, DVR/NVR, dan monitoring via HP",
+                business2_point3: "Hotspot voucheran & manajemen bandwidth MikroTik",
+                business2_point4: "Perbaikan jaringan, penanganan koneksi, dan maintenance rutin",
+                business2_point5: "Didukung perangkat MikroTik, TP-Link, Ubiquiti, Hikvision, dan Ruijie",
+                business_location: "Banda Aceh, Aceh Besar & sekitarnya", business_cta: "Pesan via WhatsApp",
+                education_kicker: "04 / Akademik", education_title: "Pendidikan",
                 degree: "Informatika — Sistem Komputer, Jaringan dan Telekomunikasi", high_school_major: "Peminatan Sains",
-                certifications_kicker: "04 / Pengembangan", certifications_title: "Sertifikasi & Kursus",
+                certifications_kicker: "05 / Pengembangan", certifications_title: "Sertifikasi & Kursus",
                 cert1: "Kursus Keamanan IT: Pertahanan terhadap Kejahatan Digital",
                 cert3: "Belajar Penerapan Machine Learning dengan Google Cloud", cert4: "Kursus Dasar-Dasar Dukungan Teknis",
-                contact_kicker: "05 / Mari terhubung", contact_title: "Ada yang ingin didiskusikan?",
+                contact_kicker: "06 / Mari terhubung", contact_title: "Ada yang ingin didiskusikan?",
                 contact_summary: "Saya terbuka untuk berbagi dan berdiskusi seputar teknologi jaringan.", send_email: "Kirim email",
                 footer_note: "© 2026 Fanul Nastia. Dibuat dengan semangat belajar.", footer_link: "Terhubung di LinkedIn"
             },
@@ -308,7 +418,7 @@
                 page_title: "Fanul Nastia — IT & Network",
                 page_description: "The portfolio of Fanul Nastia, a Computer Systems Officer focused on network administration, IT support, and cybersecurity.",
                 nav_label: "Main navigation", language_label: "Select language",
-                nav_about: "About", nav_experience: "Experience", nav_education: "Education", nav_contact: "Contact",
+                nav_about: "About", nav_experience: "Experience", nav_business: "Business", nav_education: "Education", nav_contact: "Contact",
                 hero_badge: "COMPUTER SYSTEMS OFFICER · BANDA ACEH", hero_greeting: "Hello, I'm", hero_name: "Fanul Nastia.",
                 hero_roles: "Web Developer / Networking / IT Support / Cybersecurity",
                 hero_summary: "I build web applications with Laravel and React, and work with PHP, HTML, JavaScript, Java, Python, and Google Apps Script. I also focus on network administration and cybersecurity.",
@@ -326,12 +436,30 @@
                 job3_date: "February — July 2024", job3_summary: "A collaborative program by Google, Tokopedia, Gojek, and Traveloka",
                 job4_date: "During university", job4_title: "Computer Networking Laboratory Assistant",
                 job4_summary: "Supported practical sessions in the computer networking laboratory during my university studies.",
-                education_kicker: "03 / Academic", education_title: "Education",
+                business_kicker: "03 / Business", business_title: "Businesses I run.",
+                business_summary: "Two ventures I run in Banda Aceh: a PlayStation game installation service plus network, CCTV, and IT solutions.",
+                business1_alt: "RINCO Game Store poster — PlayStation game installation service",
+                business1_tag: "PlayStation Game Installation Service",
+                business1_desc: "Game installation and setup for PlayStation 2, 3, and 4, including FMCB/MCBOOT for compatible PS2 consoles.",
+                business1_point1: "Original games & updates for PS2, PS3, and PS4",
+                business1_point2: "HDD / flash drive support plus FMCB/MCBOOT installation",
+                business1_point3: "Console model and system version check before service",
+                business1_point4: "Consultation and pricing directly via WhatsApp",
+                business2_alt: "RINCO Technology Services poster — network, CCTV, and IT solutions",
+                business2_tag: "Network · CCTV · IT Solution",
+                business2_desc: "Technology solutions for homes, boarding houses, and offices: stable internet, CCTV security, and smoother daily operations.",
+                business2_point1: "Wi-Fi installation & configuration for homes, boarding houses, and offices",
+                business2_point2: "CCTV setup: installation, DVR/NVR, and mobile monitoring",
+                business2_point3: "Voucher hotspot & MikroTik bandwidth management",
+                business2_point4: "Network repair, connection troubleshooting, and routine maintenance",
+                business2_point5: "Powered by MikroTik, TP-Link, Ubiquiti, Hikvision, and Ruijie",
+                business_location: "Banda Aceh, Aceh Besar & surrounding areas", business_cta: "Order via WhatsApp",
+                education_kicker: "04 / Academic", education_title: "Education",
                 degree: "Informatics — Computer Systems, Networking and Telecommunications", high_school_major: "Science track",
-                certifications_kicker: "04 / Learning", certifications_title: "Certifications & Courses",
+                certifications_kicker: "05 / Learning", certifications_title: "Certifications & Courses",
                 cert1: "IT Security Course: Defending Against Digital Crime",
                 cert3: "Learning to Apply Machine Learning with Google Cloud", cert4: "Technical Support Fundamentals",
-                contact_kicker: "05 / Get in touch", contact_title: "Have something in mind?",
+                contact_kicker: "06 / Get in touch", contact_title: "Have something in mind?",
                 contact_summary: "I'm open to sharing ideas and discussing network technology.", send_email: "Send an email",
                 footer_note: "© 2026 Fanul Nastia. Made with a passion for learning.", footer_link: "Connect on LinkedIn"
             },
@@ -339,7 +467,7 @@
                 page_title: "Fanul Nastia — IT 与网络",
                 page_description: "Fanul Nastia 的个人作品集，专注于网络管理、IT 支持与网络安全。",
                 nav_label: "主导航", language_label: "选择语言",
-                nav_about: "关于我", nav_experience: "工作经历", nav_education: "教育背景", nav_contact: "联系",
+                nav_about: "关于我", nav_experience: "工作经历", nav_business: "业务", nav_education: "教育背景", nav_contact: "联系",
                 hero_badge: "计算机系统专员 · 班达亚齐", hero_greeting: "你好，我是", hero_name: "帕努爾",
                 hero_roles: "Web 开发 / 网络技术 / IT 支持 / 网络安全",
                 hero_summary: "我使用 Laravel 和 React 开发 Web 应用，并使用 PHP、HTML、JavaScript、Java、Python 及 Google Apps Script。我也专注于网络管理与网络安全。",
@@ -357,12 +485,30 @@
                 job3_date: "2024年2月 — 7月", job3_summary: "由 Google、Tokopedia、Gojek 和 Traveloka 联合开展的项目",
                 job4_date: "大学期间", job4_title: "计算机网络实验室助理",
                 job4_summary: "大学期间协助开展计算机网络实验室的实践课程。",
-                education_kicker: "03 / 学术背景", education_title: "教育背景",
+                business_kicker: "03 / 业务", business_title: "我经营的业务",
+                business_summary: "我在班达亚齐经营的两项业务：PlayStation 游戏安装服务，以及网络、监控与 IT 解决方案。",
+                business1_alt: "RINCO Game Store 海报 — PlayStation 游戏安装服务",
+                business1_tag: "PlayStation 游戏安装服务",
+                business1_desc: "为 PlayStation 2、3 和 4 提供游戏安装与设置，包括兼容 PS2 主机的 FMCB/MCBOOT 安装。",
+                business1_point1: "PS2、PS3、PS4 正版游戏与更新",
+                business1_point2: "支持 HDD / U 盘，并可安装 FMCB/MCBOOT",
+                business1_point3: "服务前检查主机型号与系统版本",
+                business1_point4: "通过 WhatsApp 咨询与询价",
+                business2_alt: "RINCO Technology Services 海报 — 网络、监控与 IT 解决方案",
+                business2_tag: "网络 · 监控 · IT 解决方案",
+                business2_desc: "为家庭、宿舍和办公室提供技术方案：稳定的网络、CCTV 安防，让日常更顺畅。",
+                business2_point1: "家庭、宿舍与办公室 Wi-Fi 安装与配置",
+                business2_point2: "CCTV 安装：布线、DVR/NVR 与手机远程监控",
+                business2_point3: "热点券系统与 MikroTik 带宽管理",
+                business2_point4: "网络维修、连接故障排查与定期维护",
+                business2_point5: "支持 MikroTik、TP-Link、Ubiquiti、Hikvision 和 Ruijie 设备",
+                business_location: "班达亚齐、亚齐勿刹及周边地区", business_cta: "通过 WhatsApp 预订",
+                education_kicker: "04 / 学术背景", education_title: "教育背景",
                 degree: "信息学 — 计算机系统、网络与电信", high_school_major: "理科方向",
-                certifications_kicker: "04 / 持续学习", certifications_title: "证书与课程",
+                certifications_kicker: "05 / 持续学习", certifications_title: "证书与课程",
                 cert1: "IT 安全课程：防范数字犯罪",
                 cert3: "学习使用 Google Cloud 应用机器学习", cert4: "技术支持基础",
-                contact_kicker: "05 / 联系我", contact_title: "欢迎交流与合作。",
+                contact_kicker: "06 / 联系我", contact_title: "欢迎交流与合作。",
                 contact_summary: "欢迎与我分享想法，一起交流网络技术。", send_email: "发送邮件",
                 footer_note: "© 2026 Fanul Nastia。保持热爱，持续学习。", footer_link: "在 LinkedIn 上联系"
             }
